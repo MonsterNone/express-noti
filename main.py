@@ -31,7 +31,7 @@ for i in config.post_list:
     company = i.get('company')
 
     if not postid or not company:
-        print('config.py文件错误！')
+        print('\nconfig.py文件错误！', i, '\n')
         exit(0)
 
     # 如果是一个新的数据
@@ -47,7 +47,7 @@ for i in config.post_list:
     result = query(company, postid)
 
     if not result:
-        print('获取api数据出错！')
+        print('获取api数据出错！', i, '\n')
         continue
 
     last_time = result.get('data')[0].get('time')
