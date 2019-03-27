@@ -8,6 +8,7 @@ from code import kd100_codes
 
 data_path = os.path.split(os.path.realpath(__file__))[0] + '/' + 'data.json'
 
+
 def sc_noti(company, postid, context, full):
     company = kd100_codes[company]  # 换成中文
     text = '{company}快递{postid}状态变化：{status}'.format(company=company, postid=postid, status=context)
@@ -16,9 +17,9 @@ def sc_noti(company, postid, context, full):
     for i in full:
         desp = desp + '{time} **{stat}**\n\n'.format(time=i.get('time'), stat=i.get('context'))
 
-    print(text)
+    print(text, '\n')
 
-    post(config.sc_url, data={'text': text,'desp': desp})
+    post(config.sc_url, data={'text': text, 'desp': desp})
 
 
 with open(data_path) as a:
